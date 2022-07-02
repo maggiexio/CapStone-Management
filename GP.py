@@ -46,7 +46,7 @@ st.sidebar.markdown("## Define **filters:**")
 
 country_choice = st.sidebar.selectbox('Select the country:', ['All', 'India','Canada','Brazil', 'USA','China', 'Thailand','Philippines'])
 if country_choice != "All":
-  df_1=df_1.query("country==@country_choice")
+  df_1=df_1.query("Country==@country_choice")
 CurrencyOutUS_choice = st.sidebar.radio('Pick up category about whether having non-US currencies: ', ['All', 'Yes', 'No'])
 if CurrencyOutUS_choice != "All":
   df_1=df_1.query("CurrenciesOutUS==@CurrencyOutUS_choice")
