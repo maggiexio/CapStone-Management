@@ -62,7 +62,7 @@ with col11:
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch2}</h4>',unsafe_allow_html=True)
 
   with st.expander("Pie Charts:    check global asset currency under country"):    
-    fig_3=px.sunburst(df_1, path=['CurrenciesOutUS','wantUSCurrency', 'Country'])
+    fig_3=px.sunburst(df_1, color='wantUSCurrency', path=['CurrenciesOutUS','wantUSCurrency', 'Country'])
     st.plotly_chart(fig_3,   use_container_width=True, height=600)
   with st.expander("Tree Map:    check global asset currency under country"):    
     fig_tree=px.treemap(df_1, path=['CurrenciesOutUS','wantUSCurrency', 'Country'])
