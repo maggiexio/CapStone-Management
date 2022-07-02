@@ -45,12 +45,14 @@ df_1=df_ori
 st.sidebar.markdown("## Define **filters:**")
 
 country_choice = st.sidebar.selectbox('Select the range of order counts:', ['All', 'India','Canada','Brazil', 'USA','China', 'Thailand','Philippines'])
-if orderN_choice != "All":
-  df_1=df_1.query("OrderN_group==@orderN_choice")
-month_choice = st.sidebar.radio('Pick up month(s) you are interested:', ['All', 'Jan.', 'Feb.', 'Mar.'])
-if month_choice != "All":
-  df_1=df_1.query("Month==@month_choice")
-
+if country_choice != "All":
+  df_1=df_1.query("country==@country_choice")
+CurrencyOutUS_choice = st.sidebar.radio('Pick up month(s) you are interested:', ['All', 'Yes', 'No'])
+if CurrencyOutUS_choice != "All":
+  df_1=df_1.query("CurrenciesOutUS==@CurrencyOutUS_choice")
+wantUSCurrency_choice = st.sidebar.radio('Pick up month(s) you are interested:', ['All', 'Yes', 'No'])
+if wantUSCurrency_choice != "All":
+  df_1=df_1.query("wantUSCurrency==@wantUSCurrency_choice")
 
 # figures display
 #rt_diff = (df_1["rt_total"].max() - df_1["rt_total"].min()) / 10
@@ -74,19 +76,6 @@ with col11:
     st.plotly_chart(fig_scatter1,  use_container_width=True, height=3000)
 
      
-     
-
-
-# Filters for weekday breakdown
-df_2=df2_ori
-df_2=df_2.query("Net_Sales>=@netSales_1 and Net_Sales<=@netSales_2")
-df_2=df_2.query("Order_Count>=@orderN_1 and Order_Count<=@orderN_2")
-if orderN_choice != "All":
-  df_2=df_2.query("OrderN_group==@orderN_choice")
-weekday_choice = st.sidebar.radio('Pick up weekday(s) you are interested:', ['All', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
-if weekday_choice != "All":
-  df_2=df_2.query("Weekday==@weekday_choice")
-
 #plots for weekday breakdown
 with col11:  
   title_ch2='****2D interactive plots for weekday breakdown********'
