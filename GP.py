@@ -38,7 +38,7 @@ with col12:
         st.write ("Sorry, I am not sure! Please contact xix294@g.harvard.edu")
          
 # read in data: hourly break down
-df_ori=raw_data("./data/GP_cash_needs_survey_result_as_of_0208-7-2.xlsx", "survey")
+df_ori=raw_data("./data/GP_cash_needs_survey_result_as_of_0208-7-2.xlsx", "GP cash needs survey result as")
          
 # Filters
 df_1=df_ori
