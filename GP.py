@@ -55,39 +55,22 @@ if wantUSCurrency_choice != "All":
   df_1=df_1.query("wantUSCurrency==@wantUSCurrency_choice")
 
 # figures display
-#rt_diff = (df_1["rt_total"].max() - df_1["rt_total"].min()) / 10
-#df_1["rt_scale"] = (df_1["rt_total"] - df_1["rt_total"].min()) / rt_diff + 1
-#df_1["rt_scale"] = pow(df_1["rt_scale"],2)
 with col11:  
   title_ch1='Data Visualizaion'
   st.markdown(f'<h3 style="text-aligh: center;color: green;">{title_ch1}</h3>',unsafe_allow_html=True)
-  title_ch2='****2D interactive plots for hourly breakdown********'
+  title_ch2='****2D interactive plots********'
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch2}</h4>',unsafe_allow_html=True)
-     
-  with st.expander("Animation:    display the net sales across all hours and the relationship with Month"):  
-    fig_ani2=px.scatter(df_1, y='Net_Sales', x='Hour', animation_frame='Month', color='Hour', size='Net_Sales', size_max=60)
-    fig_ani2.update_layout(transition = {'duration': 100000})
-    st.plotly_chart(fig_ani2,  use_container_width=True, height=600)   
 
-  title_ch3='****3D interactive plots for hourly breakdown********'
+  with st.expander("Pie Charts:    check global asset currency under country"):    
+    fig_3=px.sunburst(df_1, path=['CurrenciesOutUS','wantUSCurrency', 'Country'])
+    st.plotly_chart(fig_3,   use_container_width=True, height=600)
+  with st.expander("Tree Map:    check global asset currency under country"):    
+    fig_tree=px.treemap(df_1, path=['CurrenciesOutUS','wantUSCurrency', 'Country'])
+    st.plotly_chart(fig_tree, use_container_width=True, height=600)    
+  title_ch3='****3D interactive plots********'
   st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch3}</h4>',unsafe_allow_html=True)
-  with st.expander("Check the relationship between Month, hour and net sales in an interactive 3D way"): 
-    fig_scatter1=px.scatter_3d(df_1, y='Month', x='Hour', z='Guest_Count', color='Month', size='Guest_Count', size_max=50)
+  with st.expander("Check the relationship between CurrenciesOutUS, wantUSCurrency, and Country"): 
+    fig_scatter1=px.scatter_3d(df_1, y='CurrenciesOutUS', x='wantUSCurrency', z='Country', color='wantUSCurrency', size=n, size_max=50)
     st.plotly_chart(fig_scatter1,  use_container_width=True, height=3000)
 
-     
-#plots for weekday breakdown
-with col11:  
-  title_ch2='****2D interactive plots for weekday breakdown********'
-  st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch2}</h4>',unsafe_allow_html=True)
-     
-  with st.expander("Animation:    display the net sales across all Weekdays and the relationship with Month"):  
-    fig_ani22=px.scatter(df_2, y='Net_Sales', x='Weekday', animation_frame='Month', color='Weekday', size='Net_Sales', size_max=60)
-    fig_ani22.update_layout(transition = {'duration': 100000})
-    st.plotly_chart(fig_ani22,  use_container_width=True, height=600)   
 
-  title_ch3='****3D interactive plots for weekday breakdown********'
-  st.markdown(f'<h4 style="text-aligh: center;color: green;">{title_ch3}</h4>',unsafe_allow_html=True)
-  with st.expander("Check the relationship between Month, hour and net sales in an interactive 3D way"): 
-    fig_scatter11=px.scatter_3d(df_2, y='Weekday', x='Month', z='Guest_Count', color='Weekday', size='Guest_Count', size_max=50)
-    st.plotly_chart(fig_scatter11,  use_container_width=True, height=3000)
