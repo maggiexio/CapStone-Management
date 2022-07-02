@@ -44,13 +44,13 @@ df_ori=raw_data("./data/GP_cash_needs_survey_result_as_of_0208-7-2.xlsx", "Quick
 df_1=df_ori
 st.sidebar.markdown("## Define **filters:**")
 
-country_choice = st.sidebar.selectbox('Select the range of order counts:', ['All', 'India','Canada','Brazil', 'USA','China', 'Thailand','Philippines'])
+country_choice = st.sidebar.selectbox('Select the country:', ['All', 'India','Canada','Brazil', 'USA','China', 'Thailand','Philippines'])
 if country_choice != "All":
   df_1=df_1.query("country==@country_choice")
-CurrencyOutUS_choice = st.sidebar.radio('Pick up month(s) you are interested:', ['All', 'Yes', 'No'])
+CurrencyOutUS_choice = st.sidebar.radio('Pick up category about whether having non-US currencies: ', ['All', 'Yes', 'No'])
 if CurrencyOutUS_choice != "All":
   df_1=df_1.query("CurrenciesOutUS==@CurrencyOutUS_choice")
-wantUSCurrency_choice = st.sidebar.radio('Pick up month(s) you are interested:', ['All', 'Yes', 'No'])
+wantUSCurrency_choice = st.sidebar.radio('Pick up category about whether you want US currency: ', ['All', 'Yes', 'No'])
 if wantUSCurrency_choice != "All":
   df_1=df_1.query("wantUSCurrency==@wantUSCurrency_choice")
 
