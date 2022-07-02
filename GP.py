@@ -16,12 +16,12 @@ def raw_data(input_file, sheetname):
 st.set_page_config(layout="wide", initial_sidebar_state="auto")
 col11, col12 = st.columns((3,1))
 with col11:
-  title_1="Zullee Data Exploration"
+  title_1="Survey Data exploration for GP"
   st.markdown(f'<h1 style="text-align: center;color: green;">{title_1}</h1>',unsafe_allow_html=True)
-  subj_1="-- Pre-CapStone project"
+  subj_1="-- CapStone project"
   st.markdown(f'<h2 style="text-align: center;color: green;">{subj_1}</h2>',unsafe_allow_html=True) 
-  st.markdown ("Team 6: profit model")
-  st.markdown("Data file includes net sales and number of orders/gusts, break down to every hour and  every weekday from Jan 2022 to Marchh 2022 at Spokane. ")
+  st.markdown ("Team 5")
+  st.markdown("Data are collected from ALM 2022 Capstone class. ")
    
 with col12:
   title_11="Hello! I am Henry. Can I help you?"
