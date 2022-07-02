@@ -38,63 +38,13 @@ with col12:
         st.write ("Sorry, I am not sure! Please contact xix294@g.harvard.edu")
          
 # read in data: hourly break down
-df_ori=raw_data("./data/Sales_Summary_123_2022_Spokane-Python.xlsx", "Hourly_Breakdown")
-df_ori['NetSale_group']=""
-df_ori['OrderN_group']=""
-df_ori['GuestN_group']=""
-bin_OrderN= [0,100,200,300,400, 500]
-label_OrderN = ['<100','(100,200)','(200-300)', '(300-400)','(>400)']
-df_ori['OrderN_group'] = pd.cut(df_ori['Order_Count'], bins=bin_OrderN, labels=label_OrderN, right=False)
-#df_ori['OrderN_group'] = df_ori['OrderN_group'].cat.add_categories('unknown').fillna('unknown')  
-
-# read in data: Weekday break down
-df2_ori=raw_data("./data/Sales_Summary_123_2022_Spokane-Python.xlsx", "Weekday_Breakdown")
-df2_ori['NetSale_group2']=""
-df2_ori['OrderN_group2']=""
-df2_ori['GuestN_group2']=""
-bin2_OrderN= [0,100,200,300,400, 500]
-label2_OrderN = ['<100','(100,200)','(200-300)', '(300-400)','(>400)']
- 
-with col11:  
-  with st.expander("Data view - hourly breakdown"): 
-      st.write("""
-        Please select which **hour** data you want to view. 
-        """)
-      allHours=df_ori['Hour'].drop_duplicates()
-      default_hour=['All']
-      default_hour.extend(allHours)
-      hour_choice=st.multiselect("", default_hour)
-      if ('All' in hour_choice):
-        df_ori_1=df_ori
-      else:
-        df_ori_1=df_ori.query("Hour in @hour_choice")
-      st.dataframe(df_ori_1)
-  with st.expander("Data view - weekday breakdown"): 
-      st.write("""
-        Please select which **weekday** data you want to view. 
-        """)
-      allWeekday=df2_ori['Weekday'].drop_duplicates()
-      default_weekday=['All']
-      default_hour.extend(allWeekday)
-      weekday_choice=st.multiselect("", default_weekday)
-      if ('All' in weekday_choice):
-        df_ori_2=df2_ori
-      else:
-        df_ori_2=df2_ori.query("Weekday in @weekday_choice")
-      st.dataframe(df_ori_2)
-          
+df_ori=raw_data("./data/GP cash needs survey result as of 0208-7-2.xlsx", "survey")
+         
 # Filters
 df_1=df_ori
 st.sidebar.markdown("## Define **filters:**")
-netSales_1, netSales_2 = st.sidebar.slider("Net Sales: ", min(df_ori.Net_Sales), 24000.00, (min(df_ori.Net_Sales), 24000.00))
-df_1=df_1.query("Net_Sales>=@netSales_1 and Net_Sales<=@netSales_2")
-hour_1, hour_2 = st.sidebar.slider("which hour data to be shown",  min(df_ori.Hour), max(df_ori.Hour), (min(df_ori.Hour), max(df_ori.Hour)))    
-df_1=df_1.query("Hour>=@hour_1 and Hour<=@hour_2")
-orderN_1, orderN_2 = st.sidebar.slider("Order_Count",  min(df_ori.Order_Count), 700, (min(df_ori.Order_Count), 700))    
-df_1=df_1.query("Order_Count>=@orderN_1 and Order_Count<=@orderN_2")
-#sex=df_1['gender'].drop_duplicates()
-#mode=df_1['home_computer'].drop_duplicates()
-orderN_choice = st.sidebar.selectbox('Select the range of order counts:', ['All', '<100','(100,200)','(200-300)', '(300-400)','(>400)'])
+
+country_choice = st.sidebar.selectbox('Select the range of order counts:', ['All', 'India','Canada','Brazil', 'USA','China', 'Thailand','Philippines'])
 if orderN_choice != "All":
   df_1=df_1.query("OrderN_group==@orderN_choice")
 month_choice = st.sidebar.radio('Pick up month(s) you are interested:', ['All', 'Jan.', 'Feb.', 'Mar.'])
