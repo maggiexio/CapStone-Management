@@ -50,7 +50,7 @@ if country_choice != "All":
 CurrencyOutUS_choice = st.sidebar.radio('Pick up category about whether having non-US currencies: ', ['All', 'Yes', 'No'])
 if CurrencyOutUS_choice != "All":
   df_1=df_1.query("CurrenciesOutUS==@CurrencyOutUS_choice")
-wantUSCurrency_choice = st.sidebar.radio('Pick up category about whether you want US currency: ', ['All', 'Yes', 'No', 'NA'])
+wantUSCurrency_choice = st.sidebar.radio('Pick up category about whether you want US currency: ', ['All', 'Yes', 'No', 'No Answer'])
 if wantUSCurrency_choice != "All":
   df_1=df_1.query("wantUSCurrency==@wantUSCurrency_choice")
 
