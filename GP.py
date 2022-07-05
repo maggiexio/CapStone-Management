@@ -21,7 +21,7 @@ with col11:
   subj_1="-- CapStone project"
   st.markdown(f'<h2 style="text-align: center;color: green;">{subj_1}</h2>',unsafe_allow_html=True) 
   st.markdown ("Team 5")
-  st.markdown("Data are collected from ALM 2022 Capstone class. There are 17 responses. Three questions are: 1) Where do you origianlly come from? 2)Do you have currencies other than US dollar? 3)If you do NOT have have US curency, do you want it? Among 9 respondents who have currencies other than US dollar, 8 of them want US currency. ")
+  st.markdown("Data are collected from ALM 2022 Capstone class. There are 17 responses in total. Three questions are: 1) Where do you origianlly come from? 2)Do you have currencies other than US dollar? 3)If you do NOT have have US curency, do you want it? Among 9 respondents who have currencies other than US dollar, 8 of them want US currency. ")
    
 with col12:
   title_11="Hello! I am Henry. Can I help you?"
