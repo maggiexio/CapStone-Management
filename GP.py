@@ -16,7 +16,7 @@ def raw_data(input_file, sheetname):
 st.set_page_config(layout="wide", initial_sidebar_state="auto")
 col11, col12 = st.columns((3,1))
 with col11:
-  title_1="Survey Data exploration for GP"
+  title_1="Survey Data exploration for GP Cash Management"
   st.markdown(f'<h1 style="text-align: center;color: green;">{title_1}</h1>',unsafe_allow_html=True)
   subj_1="-- CapStone project"
   st.markdown(f'<h2 style="text-align: center;color: green;">{subj_1}</h2>',unsafe_allow_html=True) 
@@ -38,7 +38,7 @@ with col12:
         st.write ("Sorry, I am not sure! Please contact xix294@g.harvard.edu")
          
 # read in data: hourly break down
-df_ori=raw_data("./data/GP_cash_needs_survey_result_as_of_0208-7-2.xlsx", "Quick 1-minute Survey about you")
+df_ori=raw_data("./data/GP_cash_needs_survey_result_as_of_7-5.xlsx", "Quick 1-minute Survey about you")
          
 # Filters
 df_1=df_ori
